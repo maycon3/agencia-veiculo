@@ -1,6 +1,6 @@
 package com.agencia.service;
 
-import java.math.BigDecimal;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +18,11 @@ public class VeiculoService {
 	
 	public Veiculo save(Veiculo veiculo) {
 		return veiculoRepo.save(veiculo);
+	}
+	
+	public Veiculo find(VeiculoId id) {
+		Optional<Veiculo> veiculo = veiculoRepo.findById(id);
+		return veiculo.get();
 	}
 	
 	public Veiculo converte(VeiculoDTO dto) {
