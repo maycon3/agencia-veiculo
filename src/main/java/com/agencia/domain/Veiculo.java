@@ -3,6 +3,7 @@ package com.agencia.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -23,6 +24,12 @@ public class Veiculo implements Serializable {
 	private Integer anoModelo;
 	private BigDecimal valor;
 	private Integer combustivel;
+	
+	/* 
+	 * estudo de classe embutina para casos onde não poderei modifica a estrutura da classe principal
+	 * **/
+	@Embedded
+	private Proprietario proprietario;
 	
 	public Veiculo(){
 	}
@@ -93,6 +100,15 @@ public class Veiculo implements Serializable {
 	public void setTipoCombustivel(TipoCombustivel tipo) {
 		combustivel = tipo.getCod();
 	}
+
+	public Proprietario getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(Proprietario proprietario) {
+		this.proprietario = proprietario;
+	}
+	
 	
 	
 }

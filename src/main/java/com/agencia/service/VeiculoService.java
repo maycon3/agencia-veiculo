@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.agencia.domain.Proprietario;
 import com.agencia.domain.Veiculo;
 import com.agencia.domain.VeiculoId;
 import com.agencia.dto.VeiculoDTO;
@@ -28,8 +29,15 @@ public class VeiculoService {
 	
 	public Veiculo converte(VeiculoDTO dto) {
 		VeiculoId id = new VeiculoId(dto.getPlaca(),dto.getCidade());
-		return  new Veiculo(id, dto.getFabricante(),dto.getModelo(),dto.getAnoFabricacao(),
+		//metodo também foi modificado para atribuir a classe embutida em veiculo.
+		Veiculo veiculo =   new Veiculo(id, dto.getFabricante(),dto.getModelo(),dto.getAnoFabricacao(),
 				dto.getAnoModelo(),dto.getValor(), TipoCombustivel.toEnum(dto.getTipoCombustivel()));
+		Proprietario p = new Proprietario();
+		p.setEmil(dto.getEmail());
+		p.setTelefone(dto.getTelefone());
+		p.setNome(dto.getNome());
+		veiculo.setProprietario(p);
+		return veiculo;
 	}
 
 }

@@ -13,6 +13,11 @@ public class VeiculoDTO {
 	private BigDecimal valor;
 	private Integer tipoCombustivel;
 	
+	//Criação de veriaveis para embutir os novos valores de classe
+	private String nome;
+	private String telefone;
+	private String email;
+	
 	public VeiculoDTO() {
 	}
 
@@ -46,6 +51,20 @@ public class VeiculoDTO {
 
 	public Integer getTipoCombustivel() {
 		return tipoCombustivel;
+	}
+	
+	//metodos para estudo de classe embutida
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public String getEmail() {
+		return email;
 	}
 
 
