@@ -7,6 +7,8 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.agencia.enums.TipoCombustivel;
+
 @Entity
 @Table(name = "tab_veiculo")
 public class Veiculo implements Serializable {
@@ -20,18 +22,20 @@ public class Veiculo implements Serializable {
 	private Integer anoFabricacao;
 	private Integer anoModelo;
 	private BigDecimal valor;
+	private Integer combustivel;
 	
 	public Veiculo(){
 	}
 
 	public Veiculo(VeiculoId id, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
-			BigDecimal valor) {
+			BigDecimal valor, TipoCombustivel combustivel) {
 		this.id = id;
 		this.fabricante = fabricante;
 		this.modelo = modelo;
 		this.anoFabricacao = anoFabricacao;
 		this.anoModelo = anoModelo;
 		this.valor = valor;
+		this.combustivel = (combustivel == null)? null:combustivel.getCod();
 	}
 	
 	public VeiculoId getId() {
@@ -82,6 +86,13 @@ public class Veiculo implements Serializable {
 		this.valor = valor;
 	}
 	
+	public TipoCombustivel getCombustivel() {
+		return TipoCombustivel.toEnum(combustivel);
+	}
+	
+	public void setTipoCombustivel(TipoCombustivel tipo) {
+		combustivel = tipo.getCod();
+	}
 	
 	
 }

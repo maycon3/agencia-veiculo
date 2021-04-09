@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.agencia.domain.Veiculo;
 import com.agencia.domain.VeiculoId;
 import com.agencia.dto.VeiculoDTO;
+import com.agencia.enums.TipoCombustivel;
 import com.agencia.repositoreis.VeiculoRepository;
 
 @Service
@@ -28,7 +29,7 @@ public class VeiculoService {
 	public Veiculo converte(VeiculoDTO dto) {
 		VeiculoId id = new VeiculoId(dto.getPlaca(),dto.getCidade());
 		return  new Veiculo(id, dto.getFabricante(),dto.getModelo(),dto.getAnoFabricacao(),
-				dto.getAnoModelo(),dto.getValor());
+				dto.getAnoModelo(),dto.getValor(), TipoCombustivel.toEnum(dto.getTipoCombustivel()));
 	}
 
 }

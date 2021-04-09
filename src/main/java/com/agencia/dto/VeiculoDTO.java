@@ -11,6 +11,7 @@ public class VeiculoDTO {
 	private Integer anoFabricacao;
 	private Integer anoModelo;
 	private BigDecimal valor;
+	private Integer tipoCombustivel;
 	
 	public VeiculoDTO() {
 	}
@@ -42,6 +43,14 @@ public class VeiculoDTO {
 	public BigDecimal getValor() {
 		return valor;
 	}
+
+	public Integer getTipoCombustivel() {
+		return tipoCombustivel;
+	}
+
+
+	
+	
 	
 	
 }
