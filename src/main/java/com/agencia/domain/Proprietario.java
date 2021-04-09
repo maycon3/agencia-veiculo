@@ -1,10 +1,20 @@
 package com.agencia.domain;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@Embeddable
+@Entity
+@Table(name = "tab_proprietario")
 public class Proprietario {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	@Column(name = "nome_proprietario", nullable = false)
 	private String nome;
@@ -15,6 +25,25 @@ public class Proprietario {
 	@Column(name = "email_proprietario")
 	private String emil;
 	
+
+	
+	public Proprietario() {
+	}
+	
+	public Proprietario(Integer id, String nome, String telefone, String emil) {
+		this.id = id;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.emil = emil;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;

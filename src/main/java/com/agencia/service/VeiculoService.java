@@ -29,15 +29,8 @@ public class VeiculoService {
 	
 	public Veiculo converte(VeiculoDTO dto) {
 		VeiculoId id = new VeiculoId(dto.getPlaca(),dto.getCidade());
-		//metodo também foi modificado para atribuir a classe embutida em veiculo.
-		Veiculo veiculo =   new Veiculo(id, dto.getFabricante(),dto.getModelo(),dto.getAnoFabricacao(),
-				dto.getAnoModelo(),dto.getValor(), TipoCombustivel.toEnum(dto.getTipoCombustivel()));
-		Proprietario p = new Proprietario();
-		p.setEmil(dto.getEmail());
-		p.setTelefone(dto.getTelefone());
-		p.setNome(dto.getNome());
-		veiculo.setProprietario(p);
-		return veiculo;
+		return new Veiculo(id, dto.getFabricante(),dto.getModelo(),dto.getAnoFabricacao(),
+				dto.getAnoModelo(),dto.getValor(), TipoCombustivel.toEnum(dto.getTipoCombustivel()));	
 	}
 
 }

@@ -13,10 +13,6 @@ public class VeiculoIdDTO implements Serializable {
 	private String fabricante;
 	private String modelo;
 	private String tipoCombustivel;
-	//mais para conceito de visualizar os dados.
-	private String nome;
-	private String email;
-	private String telefone;
 	
 	public VeiculoIdDTO() {
 	}
@@ -27,9 +23,6 @@ public class VeiculoIdDTO implements Serializable {
 		this.fabricante = veiculo.getFabricante();
 		this.modelo = veiculo.getModelo();
 		this.tipoCombustivel = veiculo.getCombustivel().getDescricao();
-		this.nome = veiculo.getProprietario().getNome();
-		this.telefone = veiculo.getProprietario().getTelefone();
-		this.email = veiculo.getProprietario().getEmil();
 	}
 
 	public String getPlaca() {
@@ -50,19 +43,6 @@ public class VeiculoIdDTO implements Serializable {
 
 	public String getTipoCombustivel() {
 		return tipoCombustivel;
-	}
-
-	//mais para conceito de visualizar os dados.
-	public String getNome() {
-		return nome;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
-	
-	public String getTelefone() {
-		return telefone;
 	}
 	
 	

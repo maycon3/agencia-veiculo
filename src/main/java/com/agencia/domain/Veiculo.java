@@ -3,9 +3,9 @@ package com.agencia.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.agencia.enums.TipoCombustivel;
@@ -26,9 +26,9 @@ public class Veiculo implements Serializable {
 	private Integer combustivel;
 	
 	/* 
-	 * estudo de classe embutina para casos onde não poderei modifica a estrutura da classe principal
+	 * estudo de classe de relacionamento um para um 
 	 * **/
-	@Embedded
+	@OneToOne
 	private Proprietario proprietario;
 	
 	public Veiculo(){
