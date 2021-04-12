@@ -1,11 +1,14 @@
 package com.agencia.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +28,8 @@ public class Proprietario {
 	@Column(name = "email_proprietario")
 	private String emil;
 	
+	@OneToMany(mappedBy = "proprietario")
+	private List<Veiculo> veiculos = new ArrayList<>();
 
 	
 	public Proprietario() {
@@ -67,6 +72,14 @@ public class Proprietario {
 
 	public void setEmil(String emil) {
 		this.emil = emil;
+	}
+
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
 	}
 	
 	

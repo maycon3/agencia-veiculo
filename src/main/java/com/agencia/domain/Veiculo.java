@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.agencia.enums.TipoCombustivel;
@@ -26,9 +26,9 @@ public class Veiculo implements Serializable {
 	private Integer combustivel;
 	
 	/* 
-	 * estudo de classe de relacionamento um para um 
+	 * estudo de classe de relacionamento muito para um 
 	 * **/
-	@OneToOne
+	@ManyToOne
 	private Proprietario proprietario;
 	
 	public Veiculo(){

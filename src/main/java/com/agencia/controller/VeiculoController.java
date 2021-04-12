@@ -1,6 +1,7 @@
 package com.agencia.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,10 +33,10 @@ public class VeiculoController {
 
 	@PostMapping
 	public ResponseEntity<Void> save(@RequestBody() VeiculoDTO dto){
-		Veiculo veiculo = veiculoService.converte(dto);
 		Proprietario proprietario = proprietarioService.converte(dto);
 		proprietario = proprietarioService.save(proprietario);
-		veiculoService.save(veiculo);
+		List<Veiculo> veiculos = veiculoService.converte(dto, proprietario);
+		veiculoService.saveAll(veiculos);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(proprietario.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}

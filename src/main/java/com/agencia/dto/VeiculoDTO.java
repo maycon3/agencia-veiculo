@@ -1,9 +1,9 @@
 package com.agencia.dto;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 public class VeiculoDTO {
-
+	/*
 	private String placa;
 	private String cidade;
 	private String fabricante;
@@ -11,15 +11,19 @@ public class VeiculoDTO {
 	private Integer anoFabricacao;
 	private Integer anoModelo;
 	private BigDecimal valor;
-	private Integer tipoCombustivel;
+	private Integer tipoCombustivel;*/
+	
 	// estudo com relacionamento um para um 
 	private String nome;
 	private String telefone;
 	private String email;
 	
+	private List<VeiculoNewDTO> veiculoDtos;
+	
 	public VeiculoDTO() {
 	}
 
+	/*
 	public String getPlaca() {
 		return placa;
 	}
@@ -51,7 +55,7 @@ public class VeiculoDTO {
 	public Integer getTipoCombustivel() {
 		return tipoCombustivel;
 	}
-	
+	*/
 	//metodo de proprietario para compor o estudo de relacionamento um para um 
 
 	public String getNome() {
@@ -65,8 +69,10 @@ public class VeiculoDTO {
 	public String getEmail() {
 		return email;
 	}
+
+	public List<VeiculoNewDTO> getVeiculoDtos() {
+		return veiculoDtos;
+	}
 	
-	
-		
 	
 }
