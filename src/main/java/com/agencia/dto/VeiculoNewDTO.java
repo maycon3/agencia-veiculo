@@ -2,6 +2,7 @@ package com.agencia.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Set;
 
 public class VeiculoNewDTO implements Serializable{
 	
@@ -15,6 +16,7 @@ public class VeiculoNewDTO implements Serializable{
 	private Integer anoModelo;
 	private BigDecimal valor;
 	private Integer tipoCombustivel;
+	private Set<Integer> tipoAcessorio;
 	
 	
 	public String getPlaca() {
@@ -65,6 +67,11 @@ public class VeiculoNewDTO implements Serializable{
 	public void setTipoCombustivel(Integer tipoCombustivel) {
 		this.tipoCombustivel = tipoCombustivel;
 	}
+	public Set<Integer> getTipoAcessorio() {
+		return tipoAcessorio;
+	}
+
+	
 	
 	
 

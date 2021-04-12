@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,10 +42,18 @@ public class VeiculoController {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	/*
 	@GetMapping
 	public ResponseEntity<VeiculoIdDTO> find(@RequestParam(required = false) String placa,
 			@RequestParam(required = false) String cidade){
 		VeiculoId id = new VeiculoId(placa,cidade);
+		Veiculo veiculo = veiculoService.find(id);
+		VeiculoIdDTO dto = new VeiculoIdDTO(veiculo);
+		return ResponseEntity.ok().body(dto);
+	}*/
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<VeiculoIdDTO> find(@PathVariable() Integer id){
 		Veiculo veiculo = veiculoService.find(id);
 		VeiculoIdDTO dto = new VeiculoIdDTO(veiculo);
 		return ResponseEntity.ok().body(dto);

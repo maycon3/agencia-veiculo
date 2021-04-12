@@ -1,7 +1,9 @@
 package com.agencia.dto;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import com.agencia.domain.Acessorio;
 import com.agencia.domain.Veiculo;
 
 public class VeiculoIdDTO implements Serializable {
@@ -13,16 +15,18 @@ public class VeiculoIdDTO implements Serializable {
 	private String fabricante;
 	private String modelo;
 	private String tipoCombustivel;
+	private Set<Acessorio> acessorios;
 	
 	public VeiculoIdDTO() {
 	}
 	
 	public VeiculoIdDTO(Veiculo veiculo) {
-		this.placa = veiculo.getId().getPlaca();
-		this.cidade = veiculo.getId().getCidade();
+		this.placa = veiculo.getPlaca();
+		this.cidade = veiculo.getCidade();
 		this.fabricante = veiculo.getFabricante();
 		this.modelo = veiculo.getModelo();
 		this.tipoCombustivel = veiculo.getCombustivel().getDescricao();
+		this.acessorios = veiculo.getAcessorios();
 	}
 
 	public String getPlaca() {
@@ -44,6 +48,12 @@ public class VeiculoIdDTO implements Serializable {
 	public String getTipoCombustivel() {
 		return tipoCombustivel;
 	}
+
+	public Set<Acessorio> getAcessorios() {
+		return acessorios;
+	}
+	
+	
 	
 	
 }

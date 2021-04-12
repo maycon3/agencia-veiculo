@@ -2,9 +2,16 @@ package com.agencia.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -16,14 +23,20 @@ public class Veiculo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@EmbeddedId
+	/*@EmbeddedId
 	private VeiculoId id;
+	*/
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String fabricante;
 	private String modelo;
 	private Integer anoFabricacao;
 	private Integer anoModelo;
 	private BigDecimal valor;
 	private Integer combustivel;
+	private String placa;
+	private String cidade;
 	
 	/* 
 	 * estudo de classe de relacionamento muito para um 
@@ -31,11 +44,21 @@ public class Veiculo implements Serializable {
 	@ManyToOne
 	private Proprietario proprietario;
 	
+	/*
+	 * Criando relacionamento muitos para muitos
+	 */
+	
+	@ManyToMany
+	@JoinTable(name = "veiculo_acessorios",
+			joinColumns = @JoinColumn(name = "cod_veiculo"),
+			inverseJoinColumns = @JoinColumn(name = "cod_acessorio"))
+	private Set<Acessorio> acessorios = new HashSet<>();
+	
 	public Veiculo(){
 	}
 
-	public Veiculo(VeiculoId id, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
-			BigDecimal valor, TipoCombustivel combustivel) {
+	public Veiculo(Integer id, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
+			BigDecimal valor, TipoCombustivel combustivel,String placa, String cidade) {
 		this.id = id;
 		this.fabricante = fabricante;
 		this.modelo = modelo;
@@ -43,13 +66,16 @@ public class Veiculo implements Serializable {
 		this.anoModelo = anoModelo;
 		this.valor = valor;
 		this.combustivel = (combustivel == null)? null:combustivel.getCod();
+		this.placa = placa;
+		this.cidade = cidade;
 	}
 	
-	public VeiculoId getId() {
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(VeiculoId id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -108,6 +134,31 @@ public class Veiculo implements Serializable {
 	public void setProprietario(Proprietario proprietario) {
 		this.proprietario = proprietario;
 	}
+
+	public Set<Acessorio> getAcessorios() {
+		return acessorios;
+	}
+
+	public void setAcessorios(Set<Acessorio> acessorios) {
+		this.acessorios = acessorios;
+	}
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	
 	
 	
 	
